@@ -1,0 +1,65 @@
+<section class="section hero">
+  <div class="hero-inner">
+    {{search submit=false instant=settings.instant_search class='search search-full'}}
+  </div>
+</section>
+
+<div class="container">
+  <section class="section knowledge-base">
+    <h1 class="center">{{settings.help_center_categories_title}}</h1>
+    <section class="categories blocks">
+      <ul class="blocks-list">
+        {{#each categories}}
+          {{#if ../has_multiple_categories}}
+            <li class="blocks-item">
+              <a href='{{url}}' class="blocks-item-link">
+                  <span class="tile-icon">
+                  {{#is id 360001121653}}<img class="svg" src="{{asset 'onboard.svg'}}" />{{/is}}
+                  {{#is id 360001121633}}<img class="svg" src="{{asset 'hardware-incident.svg'}}" />{{/is}}
+                  {{#is id 360001121613}}<img class="svg" src="{{asset 'hardware-request.svg'}}" />{{/is}}
+                  {{#is id 360001121593}}<img class="svg" src="{{asset 'network-incident.svg'}}" />{{/is}}
+                  {{#is id 360001121573}}<img class="svg" src="{{asset 'software-incident.svg'}}" />{{/is}}
+                  {{#is id 360001121553}}<img class="svg" src="{{asset 'software-request.svg'}}" />{{/is}}
+                  {{#is id 360001121533}}<img class="svg" src="{{asset 'account-forgot-password.svg'}}" />{{/is}}
+                  </span>
+              <span class="blocks-content">
+              <h2 class="blocks-item-title">{{name}}</h2>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+              </span>
+              </a>
+            </li>
+          {{else}}
+            {{#each sections}}
+              <li class="blocks-item">
+                <a href='{{url}}' class="blocks-item-link">
+                  <h4 class="blocks-item-title">
+                    {{name}}
+                  </h4>
+                  <p class="blocks-item-description">{{excerpt description}}</p>
+                </a>
+              </li>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </ul>
+      {{pagination}}
+    </section>
+
+    {{#if promoted_articles}}
+      <section class="articles">
+        <h1 class="center">{{settings.promoted_articles_title}}</h1>
+        <ul class="article-list promoted-articles">
+          {{#each promoted_articles}}
+            <li class="promoted-articles-item {{id}}">
+              <a href="{{url}}">
+                {{title}}
+              </a>
+              {{#if internal}}
+                <span class="icon-lock" title="{{t 'internal'}}"></span>
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    {{/if}}
+  </section>

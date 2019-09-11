@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="logo">
+    {{#link 'help_center'}}
+      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
+    {{/link}}
+  </div>
+  <div class="nav-wrapper">
+    <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
+    {{user_info}}
+    <nav class="user-nav" id="user-nav">
+      {{#link 'new_request' class='submit-a-request'}}
+      {{settings.submit_a_request_text}}
+      {{/link}}
+<!--       <a href="tel:0386202229" class="submit-a-request">Call: (03) 8620 2229</a> -->
+    </nav>
+
+  </div>
+</header>
+<section class="outage-banner"><span class="outage-title"></span><span class="outage-body"></span></section>

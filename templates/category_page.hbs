@@ -1,0 +1,69 @@
+<section class="section hero">
+  <div class="hero-inner">
+    {{search submit=false instant=settings.instant_search class='search search-full'}}
+  </div>
+</section>
+<div class="container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+    {{!-- {{search submit=false}} --}}
+  </nav>
+
+  <div class="category-container">
+    <div class="category-content">
+      <header class="page-header">
+        <span class="tile-icon">
+                  {{#is category.id 360001121653}}<img class="svg" src="{{asset 'onboard.svg'}}" />{{/is}}
+                  {{#is category.id 360001121633}}<img class="svg" src="{{asset 'hardware-incident.svg'}}" />{{/is}}
+                  {{#is category.id 360001121613}}<img class="svg" src="{{asset 'hardware-request.svg'}}" />{{/is}}
+                  {{#is category.id 360001121593}}<img class="svg" src="{{asset 'network-incident.svg'}}" />{{/is}}
+                  {{#is category.id 360001121573}}<img class="svg" src="{{asset 'software-incident.svg'}}" />{{/is}}
+                  {{#is category.id 360001121553}}<img class="svg" src="{{asset 'software-request.svg'}}" />{{/is}}
+                  {{#is category.id 360001121533}}<img class="svg" src="{{asset 'account-forgot-password.svg'}}" />{{/is}}
+        </span>
+        <h1>{{category.name}}</h1>
+        {{#if category.description}}
+          <p class="page-header-description">{{category.description}}</p>
+        {{/if}}
+      </header>
+
+      <div class="section-tree">
+        {{#each sections}}
+          <section class="section">
+            <h2 class="section-tree-title">
+              <a href="{{url}}">{{name}}</a>
+            </h2>
+            {{#if articles}}
+              <ul class="article-list">
+                {{#each articles}}
+                  <li class="article-list-item{{#if promoted}} article-promoted{{/if}} {{id}}">
+{{!--                     {{#if promoted}}
+                      <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+                    {{/if}} --}}
+                    <a href="{{url}}" class="article-list-link">{{title}}</a>
+                    {{#if internal}}
+                      <span class="icon-lock" title="{{t 'internal'}}"></span>
+                    {{/if}}
+                  </li>
+                {{/each}}
+              </ul>
+              {{#if more_articles}}
+                <a href="{{url}}" class="see-all-articles button">
+                  {{t 'show_all_articles' count=article_count}}
+                </a>
+              {{/if}}
+            {{else}}
+              <i class="section-empty">
+                <a href="{{url}}">{{t 'empty'}}</a>
+              </i>
+            {{/if}}
+          </section>
+        {{else}}
+          <i class="category-empty">
+            <a href="{{category.url}}">{{t 'empty'}}</a>
+          </i>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
