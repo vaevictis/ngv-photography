@@ -9,27 +9,27 @@
     <h1 class="center">{{settings.help_center_categories_title}}</h1>
     <section class="categories blocks">
       <ul class="blocks-list">
-        <li class="blocks-item">
-          <a href='/hc/en-us/requests/new?ticket_form_id=360000038695' class="blocks-item-link">
-            <h4 class="blocks-item-title">
-              Publishing
-            </h4>
-          </a>
-        </li>
-        <li class="blocks-item">
-          <a href='/hc/en-us/requests/new?ticket_form_id=360000037776' class="blocks-item-link">
-            <h4 class="blocks-item-title">
-              Photography Services
-            </h4>
-          </a>
-        </li>
-        <li class="blocks-item">
-          <a href='/hc/en-us/requests/new?ticket_form_id=360000038675' class="blocks-item-link">
-            <h4 class="blocks-item-title">
-              Pre Press
-            </h4>
-          </a>
-        </li>
+        {{#each categories}}
+          {{#if ../has_multiple_categories}}
+            <li class="blocks-item">
+              <a href='{{url}}' class="blocks-item-link">
+                <h4 class="blocks-item-title">{{name}}</h4>
+              </a>
+            </li>
+          {{else}}
+            {{#each sections}}
+              <li class="blocks-item">
+                <a href='{{url}}' class="blocks-item-link">
+                  <h4 class="blocks-item-title">
+                    {{name}}
+                  </h4>
+                  <p class="blocks-item-description">{{excerpt description}}</p>
+                </a>
+              </li>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+
         <li class="blocks-item">
           <a href='/hc/en-au/requests' class="blocks-item-link">
             <h4 class="blocks-item-title">
